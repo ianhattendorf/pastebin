@@ -38,4 +38,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Generate minitest specs by default
+  config.generators do |generator|
+    generator.test_framework :minitest, spec: true
+  end
 end
