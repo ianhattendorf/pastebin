@@ -26,8 +26,10 @@ group :development do
 end
 
 group :test do
+  gem 'codeclimate-test-reporter', require: false
   gem 'minitest-rails'
   gem 'minitest-reporters'
+  gem 'rake' # required for Travis CI
 end
 
 group :development, :test do

@@ -1,0 +1,13 @@
+language: ruby
+rvm: 2.2.0
+bundler_args: "--without production"
+addons:
+  code_climate:
+    repo_token:
+      secure: bNw63tED3iUFD/7QmywxE0zAZ9IpJsj4FF3XXRKUXYIdUB+wo6r0MG5XUNuvhqTgzQY4YHEnOhBhb0pmN8ff3soUECE8ZFK2Z56mXSGEUDw4AJXjX4BdjIktkZvWvQCiXw1NA9xiFKWvgrV+uPaNa9CisB5FviW9YLYIs2AA2JI=
+  postgresql: "9.4"
+before_script:
+  - psql -c "select version();" -U postgres | cat
+  - psql -c 'create database pastebin_test;' -U postgres
+  - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:schema:load

@@ -1,0 +1,5 @@
+test:
+  adapter: postgresql
+  username: postgres
+  encoding: unicode
+  database: pastebin_test
