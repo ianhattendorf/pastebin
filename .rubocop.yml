@@ -1,0 +1,16 @@
+AllCops:
+  Include:
+    - Rakefile
+    - config.ru
+  Exclude:
+    - bin/rails
+    - bin/rake
+    - bin/setup
+    - bin/spring
+    - db/schema.rb
+
+Metrics/LineLength:
+  Max: 100
+
+Style/Documentation:
+  Enabled: false
