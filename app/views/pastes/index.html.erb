@@ -1,16 +1,25 @@
-<h1>Pastes</h1>
+<div class="row">
+  <div class="col-sm-10">
+    <h2>New Paste</h2>
+    <%= form_for @paste, role: 'form' do |f| %>
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, rows: '10', class: 'form-control' %>
+      </div>
 
-<ul>
-  <%= render @pastes %>
-</ul>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
 
-<h2>New Paste</h2>
-<%= form_for @paste do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="col-sm-2">
+    <h2>Pastes</h2>
 
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-
-  <%= f.submit 'Submit' %>
-<% end %>
+    <ul>
+      <%= render @pastes %>
+    </ul>
+  </div>
+</div>

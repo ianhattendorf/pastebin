@@ -1,11 +1,21 @@
-<h1>Edit paste</h1>
-<%= form_for(@paste) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= content_for :title, 'Edit Paste' %>
 
-  <%= f.label :content %>
-  <%= f.text_area :content %>
+<div class="row">
+  <div class="col-sm-10">
+    <h2>Edit Paste</h2>
+    <%= form_for @paste, role: 'form' do |f| %>
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, rows: '10', class: 'form-control' %>
+      </div>
 
-  <%= f.submit 'Save changes' %>
-<% end %>
-<%= link_to 'back', @paste %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+
+      <%= f.submit 'Save changes', class: 'btn btn-primary' %>
+      <%= link_to 'back', @paste, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+</div>

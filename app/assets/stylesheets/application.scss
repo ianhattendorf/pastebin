@@ -1,0 +1,54 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap/theme';
+
+@import 'pastes';
+
+$gray-medium-light: #eaeaea;
+
+html {
+  overflow-y: scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 1.2em;
+  font-weight: normal;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+footer {
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  margin-top: 45px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.debug_dump {
+  @include box-sizing(border-box);
+  clear: both;
+  float: left;
+  margin-top: 45px;
+  width: 100%;
+}

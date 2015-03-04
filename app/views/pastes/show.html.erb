@@ -1,5 +1,11 @@
-<h1><%= @paste.title %></h1>
-<p><%= @paste.content %></p>
-<%= link_to 'back to all pastes', pastes_path %>
-<%= link_to 'edit', edit_paste_path(@paste) %>
-<%= link_to 'delete', @paste, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= content_for :title, 'View Paste' %>
+
+<div class="row">
+  <div class="col-md-8">
+    <h1><%= @paste.title %></h1>
+    <pre class="pre-scrollable"><%= @paste.content %></pre>
+    <%= link_to 'back to all pastes', pastes_path, class: 'btn btn-default' %>
+    <%= link_to 'edit', edit_paste_path(@paste), class: 'btn btn-primary' %>
+    <%= link_to 'delete', @paste, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
