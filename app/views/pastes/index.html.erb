@@ -1,0 +1,16 @@
+<h1>Pastes</h1>
+
+<ul>
+  <%= render @pastes %>
+</ul>
+
+<h2>New Paste</h2>
+<%= form_for @paste do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.submit 'Submit' %>
+<% end %>

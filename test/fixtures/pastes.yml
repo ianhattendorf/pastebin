@@ -1,0 +1,10 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: paste1
+  content: content1
+
+two:
+  title: paste2
+  content: content2
