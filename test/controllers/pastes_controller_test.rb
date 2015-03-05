@@ -44,4 +44,16 @@ describe PastesController do
     delete :destroy, id: @paste
     assert_redirected_to root_url
   end
+
+  it 'should get download' do
+    get :download, id: @paste
+    assert_equal @paste.content, response.body
+    assert_match 'text/plain', response.header['Content-Type']
+  end
+
+  it 'should get raw' do
+    get :raw, id: @paste
+    assert_equal @paste.content, response.body
+    assert_match 'text/plain', response.header['Content-Type']
+  end
 end

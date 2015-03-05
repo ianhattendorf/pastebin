@@ -1,3 +1,5 @@
+require 'coderay'
+
 module ApplicationHelper
   BASE_TITLE = 'Pastebin'.freeze
 

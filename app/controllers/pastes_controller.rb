@@ -36,6 +36,16 @@ class PastesController < ApplicationController
     redirect_to root_url
   end
 
+  def download
+    paste = Paste.find(params[:id])
+    send_data paste.content, filename: "#{paste.title}.#{paste.file_extension}", type: Mime::TEXT
+  end
+
+  def raw
+    paste = Paste.find(params[:id])
+    render plain: paste.content
+  end
+
   private
 
   def paste_params

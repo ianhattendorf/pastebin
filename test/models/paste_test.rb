@@ -29,4 +29,8 @@ describe Paste do
     @paste.save!
     assert_equal 'ruby', @paste.language
   end
+
+  it 'should know it\'s file extension' do
+    assert_equal 'rb', @paste.file_extension
+  end
 end

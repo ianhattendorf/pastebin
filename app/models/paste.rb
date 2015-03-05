@@ -1,3 +1,5 @@
+require 'coderay'
+
 class Paste < ActiveRecord::Base
   validates :content, presence: true
   before_create :default_language
@@ -5,6 +7,10 @@ class Paste < ActiveRecord::Base
   def title
     atr = self[:title]
     atr.empty? ? 'Untitled' : atr
+  end
+
+  def file_extension
+    CodeRay.scanner(language.to_sym).file_extension
   end
 
   private
