@@ -1,1 +1,4 @@
-<li><%= link_to paste.title, paste %></li>
+<li>
+  <%= link_to paste.title, paste %>
+  <small><%= time_ago_in_words(paste.created_at) %> ago</small>
+</li>

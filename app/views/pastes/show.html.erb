@@ -3,6 +3,7 @@
 <div class="row">
   <div class="col-md-8">
     <h1><%= @paste.title %></h1>
+    <span class="paste-details">Posted on <%= @paste.created_at.to_formatted_s(:long_ordinal) %></span>
     <pre class="pre-scrollable"><%= @paste.content %></pre>
     <%= link_to 'back to all pastes', pastes_path, class: 'btn btn-default' %>
     <%= link_to 'edit', edit_paste_path(@paste), class: 'btn btn-primary' %>

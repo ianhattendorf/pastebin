@@ -17,3 +17,21 @@
 .error-explanation {
   color: $state-danger-text;
 }
+
+.pastes {
+  > h2 {
+    text-align: center;
+  }
+}
+
+.pastes-menu {
+  small {
+    color: lighten($gray-base, 75%);
+    display: block;
+  }
+}
+
+.paste-details {
+  display: block;
+  margin-bottom: 5px;
+}

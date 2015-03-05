@@ -2,9 +2,9 @@
 @import 'bootstrap';
 @import 'bootstrap/theme';
 
-@import 'pastes';
-
 $gray-medium-light: #eaeaea;
+
+@import 'pastes';
 
 html {
   overflow-y: scroll;
