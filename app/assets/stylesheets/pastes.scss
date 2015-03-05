@@ -1,5 +1,8 @@
-.pre-scrollable {
-  height: 350px;
+.code {
+  > pre {
+    height: 350px;
+    overflow-y: scroll;
+  }
 }
 
 .field_with_errors {

@@ -3,3 +3,5 @@ IrresponsibleModule:
   enabled: false
 FeatureEnvy:
   enabled: false
+UtilityFunction:
+  max_helper_calls: 2

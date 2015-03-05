@@ -4,7 +4,9 @@
 one:
   title: paste1
   content: content1
+  language: ruby
 
 two:
   title: paste2
   content: content2
+  language: text

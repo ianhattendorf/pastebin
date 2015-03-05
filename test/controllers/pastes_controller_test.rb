@@ -16,7 +16,7 @@ describe PastesController do
   end
 
   it 'should post create' do
-    post :create, paste: { title: 'a title', content: 'some content' }
+    post :create, paste: { title: 'a title', content: 'some content', language: 'ruby' }
     assert_response :redirect
   end
 
@@ -31,7 +31,7 @@ describe PastesController do
   end
 
   it 'should patch update' do
-    patch :update, id: @paste, paste: { title: 'a title', content: 'some content' }
+    patch :update, id: @paste, paste: { title: 'a title', content: 'some content', language: 'cpp' }
     assert_redirected_to @paste
   end
 
