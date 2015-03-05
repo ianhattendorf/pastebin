@@ -1,12 +1,12 @@
 module ApplicationHelper
-  @base_title = 'Pastebin'
+  BASE_TITLE = 'Pastebin'.freeze
 
   # Returns the full page title based on the current page
   def full_title(page_title = '')
     if page_title.empty?
-      @base_title
+      BASE_TITLE
     else
-      "#{@base_title} | #{page_title}"
+      "#{BASE_TITLE} | #{page_title}"
     end
   end
 end

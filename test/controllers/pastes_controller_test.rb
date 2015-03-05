@@ -20,6 +20,11 @@ describe PastesController do
     assert_response :redirect
   end
 
+  it 'should render index if create fails' do
+    post :create, paste: { title: '', content: '' }
+    assert_template :index
+  end
+
   it 'should get edit' do
     get :edit, id: @paste
     assert_response :success
@@ -28,6 +33,11 @@ describe PastesController do
   it 'should patch update' do
     patch :update, id: @paste, paste: { title: 'a title', content: 'some content' }
     assert_redirected_to @paste
+  end
+
+  it 'should render edit if update fails' do
+    patch :update, id: @paste, paste: { title: '', content: '' }
+    assert_template :edit
   end
 
   it 'should delete destroy' do

@@ -13,7 +13,8 @@ class PastesController < ApplicationController
     if @paste.save
       redirect_to @paste
     else
-      render 'new'
+      @pastes = Paste.all
+      render :index
     end
   end
 
@@ -26,7 +27,7 @@ class PastesController < ApplicationController
     if @paste.update_attributes(paste_params)
       redirect_to @paste
     else
-      render 'edit'
+      render :edit
     end
   end
 
