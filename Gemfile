@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.2.1'
 
 gem 'rails', '~> 4.2.0'
 gem 'pg', '~> 0.18.1'
@@ -31,11 +31,11 @@ group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'minitest-rails'
   gem 'minitest-reporters'
-  gem 'rake' # required for Travis CI
+  gem 'rake', require: false # required for Travis CI
 end
 
 group :development, :test do
-  gem 'reek'
-  gem 'rubocop'
-  gem 'spring'
+  gem 'reek', require: false
+  gem 'rubocop', require: false
+  gem 'spring', require: false
 end
