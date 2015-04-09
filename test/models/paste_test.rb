@@ -15,8 +15,9 @@ describe Paste do
   end
 
   it 'should not require a title' do
-    @paste.title = ''
-    assert @paste.valid?
+    untitled_paste = Paste.new(title: '', content: 'more content', language: 'text')
+    assert untitled_paste.save
+    assert_equal 'Untitled', untitled_paste.title
   end
 
   it 'should have a language' do
