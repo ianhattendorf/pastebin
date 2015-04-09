@@ -24,6 +24,7 @@ gem 'coderay', '~> 1.1.0'
 
 group :development do
   gem 'byebug'
+  gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
 end
 
