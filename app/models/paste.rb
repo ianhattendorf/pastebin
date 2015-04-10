@@ -1,6 +1,7 @@
 require 'coderay'
 
 class Paste < ActiveRecord::Base
+  enum visibility: [:is_public, :is_private, :is_unlisted]
   belongs_to :user
   validates :content, presence: true
   validates :language, inclusion: { in: proc { Paste.languages } }

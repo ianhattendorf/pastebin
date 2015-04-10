@@ -38,4 +38,12 @@ describe Paste do
     t = Paste.reflect_on_association(:user)
     assert_equal :belongs_to, t.macro
   end
+
+  it 'should have a default visibility' do
+    assert @paste.is_public?
+  end
+
+  it 'should have different visibility levels' do
+    assert_equal 3, Paste.visibilities.length
+  end
 end

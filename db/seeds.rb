@@ -31,7 +31,17 @@ lana = User.create!(email: 'lana@example.com', password: 'asdfasdf')
 
 archer.pastes.create!(title: 'So hip', content: text_content, language: 'text')
 archer.pastes.create!(content: 'untitled paste', language: 'text')
+archer.pastes.create!(
+  title: 'private paste',
+  content: 'secrets',
+  language: 'text',
+  visibility: :is_private)
 
 lana.pastes.create!(title: 'lana\'s paste', content: 'nonsense', language: 'text')
+lana.pastes.create!(
+  title: 'unlisted paste',
+  content: 'unlisted',
+  language: 'text',
+  visibility: :is_unlisted)
 
 Paste.create!(title: 'Anonymous paste', content: ruby_content, language: 'ruby')
