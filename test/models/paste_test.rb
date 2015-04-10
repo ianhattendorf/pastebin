@@ -46,4 +46,11 @@ describe Paste do
   it 'should have different visibility levels' do
     assert_equal 3, Paste.visibilities.length
   end
+
+  it 'requires a user for private visibility' do
+    @paste.visibility = 'is_private'
+    assert_not @paste.valid?
+    @paste.user = users(:archer)
+    assert @paste.valid?
+  end
 end

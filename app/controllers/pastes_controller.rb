@@ -53,7 +53,7 @@ class PastesController < ApplicationController
   private
 
   def paste_params
-    params.require(:paste).permit(:title, :content, :language)
+    params.require(:paste).permit(:title, :content, :language, :visibility)
   end
 
   def paste_owner

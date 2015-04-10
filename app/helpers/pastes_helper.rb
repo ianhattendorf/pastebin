@@ -20,4 +20,10 @@ module PastesHelper
       false
     end
   end
+
+  def valid_visibility_levels
+    visibility_levels = Paste.visibilities.dup
+    visibility_levels.except!(:is_private) unless user_signed_in?
+    visibility_levels
+  end
 end

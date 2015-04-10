@@ -5,6 +5,7 @@ class Paste < ActiveRecord::Base
   belongs_to :user
   validates :content, presence: true
   validates :language, inclusion: { in: proc { Paste.languages } }
+  before_validation :visibility_check
   before_save :default_title
 
   def self.languages
@@ -20,5 +21,10 @@ class Paste < ActiveRecord::Base
 
   def default_title
     self.title = 'Untitled' if title.blank?
+  end
+
+  # Ensure a user is present if paste is private
+  def visibility_check
+    user.present? || !is_private?
   end
 end
