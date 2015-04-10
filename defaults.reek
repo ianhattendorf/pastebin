@@ -1,7 +1,11 @@
 ---
-IrresponsibleModule:
+DuplicateMethodCall:
   enabled: false
 FeatureEnvy:
+  enabled: false
+IrresponsibleModule:
+  enabled: false
+NilCheck:
   enabled: false
 UtilityFunction:
   max_helper_calls: 2

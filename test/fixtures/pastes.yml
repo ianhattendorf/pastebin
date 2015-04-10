@@ -5,8 +5,15 @@ one:
   title: paste1
   content: content1
   language: ruby
+  user: archer
 
 two:
+  title: paste2
+  content: content2
+  language: text
+  user: lana
+
+three:
   title: paste2
   content: content2
   language: text

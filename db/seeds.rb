@@ -26,7 +26,12 @@ mi tousled dreamcatcher semiotics messenger bag freegan. Godard paleo American
 Apparel, viral Carles Intelligentsia vinyl.
 PASTE_CONTENT
 
-user = User.create!(email: 'test@example.com', password: 'asdfasdf')
-user.pastes.create!(title: 'So hip', content: text_content, language: 'text')
-user.pastes.create!(title: '', content: 'untitled paste', language: 'text')
-Paste.create!(title: 'User Test', content: ruby_content, language: 'ruby')
+archer = User.create!(email: 'archer@example.com', password: '12341234')
+lana = User.create!(email: 'lana@example.com', password: 'asdfasdf')
+
+archer.pastes.create!(title: 'So hip', content: text_content, language: 'text')
+archer.pastes.create!(content: 'untitled paste', language: 'text')
+
+lana.pastes.create!(title: 'lana\'s paste', content: 'nonsense', language: 'text')
+
+Paste.create!(title: 'Anonymous paste', content: ruby_content, language: 'ruby')

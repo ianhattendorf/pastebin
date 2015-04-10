@@ -3,9 +3,9 @@ require 'test_helper'
 describe PastesController do
   include Devise::TestHelpers
 
-  before do
-    @paste = pastes(:one)
-  end
+  let(:archer) { users(:archer) }
+  let(:lana) { users(:lana) }
+  let(:paste) { pastes(:one) }
 
   it 'should get index' do
     get :index
@@ -13,7 +13,7 @@ describe PastesController do
   end
 
   it 'should get show' do
-    get :show, id: @paste
+    get :show, id: paste
     assert_response :success
   end
 
@@ -28,34 +28,48 @@ describe PastesController do
   end
 
   it 'should get edit' do
-    get :edit, id: @paste
+    sign_in archer
+    get :edit, id: paste
     assert_response :success
   end
 
+  it 'should redirect if not signed in' do
+    get :edit, id: paste
+    assert_redirected_to root_url
+  end
+
+  it 'should redirect if unauthorized' do
+    sign_in lana
+    get :edit, id: paste
+    assert_redirected_to root_url
+  end
+
   it 'should patch update' do
-    patch :update, id: @paste, paste: { title: 'a title', content: 'some content', language: 'cpp' }
-    assert_redirected_to @paste
+    sign_in archer
+    patch :update, id: paste, paste: { title: 'a title', content: 'some content', language: 'cpp' }
+    assert_redirected_to paste
   end
 
   it 'should render edit if update fails' do
-    patch :update, id: @paste, paste: { title: '', content: '' }
+    sign_in archer
+    patch :update, id: paste, paste: { title: '', content: '' }
     assert_template :edit
   end
 
   it 'should delete destroy' do
-    delete :destroy, id: @paste
+    delete :destroy, id: paste
     assert_redirected_to root_url
   end
 
   it 'should get download' do
-    get :download, id: @paste
-    assert_equal @paste.content, response.body
+    get :download, id: paste
+    assert_equal paste.content, response.body
     assert_match 'text/plain', response.header['Content-Type']
   end
 
   it 'should get raw' do
-    get :raw, id: @paste
-    assert_equal @paste.content, response.body
+    get :raw, id: paste
+    assert_equal paste.content, response.body
     assert_match 'text/plain', response.header['Content-Type']
   end
 end

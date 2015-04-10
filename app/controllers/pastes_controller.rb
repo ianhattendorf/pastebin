@@ -1,4 +1,6 @@
 class PastesController < ApplicationController
+  before_action :paste_owner, only: [:edit, :update, :destroy]
+
   def index
     @paste = Paste.new
     @pastes = Paste.all
@@ -23,11 +25,9 @@ class PastesController < ApplicationController
   end
 
   def edit
-    @paste = Paste.find(params[:id])
   end
 
   def update
-    @paste = Paste.find(params[:id])
     if @paste.update_attributes(paste_params)
       redirect_to @paste
     else
@@ -36,7 +36,7 @@ class PastesController < ApplicationController
   end
 
   def destroy
-    Paste.find(params[:id]).destroy
+    @paste.destroy
     redirect_to root_url
   end
 
@@ -54,5 +54,11 @@ class PastesController < ApplicationController
 
   def paste_params
     params.require(:paste).permit(:title, :content, :language)
+  end
+
+  def paste_owner
+    @paste = Paste.find(params[:id])
+    return unless @paste.user.nil? || @paste.user != current_user
+    redirect_to root_url, alert: 'You must be the owner of the paste to do that.'
   end
 end

@@ -4,7 +4,7 @@
   <div class="col-md-8">
     <h1><%= @paste.title %></h1>
     <span class="paste-details">
-      Posted on <%= @paste.created_at.to_formatted_s(:long_ordinal) %> by <%= posted_by(@paste) %> |
+      Posted on <%= @paste.created_at.to_formatted_s(:long_ordinal) %> by <%= posted_by %> |
       Syntax: <%= @paste.language %> |
       Size: <%= number_to_human_size(@paste.content.bytesize) %> |
       <%= link_to 'Download', download_path(@paste) %> |
@@ -12,7 +12,9 @@
     </span>
     <%= syntax_highlight(@paste.content, @paste.language.to_sym).html_safe %>
     <%= link_to 'back to all pastes', pastes_path, class: 'btn btn-default' %>
-    <%= link_to 'edit', edit_paste_path(@paste), class: 'btn btn-primary' %>
-    <%= link_to 'delete', @paste, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if owner? %>
+      <%= link_to 'edit', edit_paste_path(@paste), class: 'btn btn-primary' %>
+      <%= link_to 'delete', @paste, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 </div>
