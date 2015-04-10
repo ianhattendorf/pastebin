@@ -1,6 +1,7 @@
 require 'coderay'
 
 class Paste < ActiveRecord::Base
+  belongs_to :user
   validates :content, presence: true
   validates :language, inclusion: { in: proc { Paste.languages } }
   before_save :default_title

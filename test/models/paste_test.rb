@@ -33,4 +33,9 @@ describe Paste do
     @paste.language = 'not a language'
     assert @paste.invalid?
   end
+
+  it 'should have a user' do
+    t = Paste.reflect_on_association(:user)
+    assert_equal :belongs_to, t.macro
+  end
 end
