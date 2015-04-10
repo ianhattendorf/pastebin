@@ -17,7 +17,25 @@ describe PastesController do
     assert_response :success
   end
 
+  it 'should get show with owner' do
+    sign_in archer
+    get :show, id: paste
+    assert_response :success
+  end
+
+  it 'should get show with non-owner' do
+    sign_in lana
+    get :show, id: paste
+    assert_response :success
+  end
+
   it 'should post create' do
+    post :create, paste: { title: 'a title', content: 'some content', language: 'ruby' }
+    assert_response :redirect
+  end
+
+  it 'should post create when signed in' do
+    sign_in archer
     post :create, paste: { title: 'a title', content: 'some content', language: 'ruby' }
     assert_response :redirect
   end
@@ -57,8 +75,11 @@ describe PastesController do
   end
 
   it 'should delete destroy' do
+    sign_in archer
+    paste_count = archer.pastes.count
     delete :destroy, id: paste
     assert_redirected_to root_url
+    assert_equal paste_count - 1, archer.pastes.count
   end
 
   it 'should get download' do
