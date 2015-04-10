@@ -6,13 +6,13 @@ namespace :testcode do
     desc 'Execute rubocop -DR'
     RuboCop::RakeTask.new(:rubocop) do |tsk|
       tsk.options = ['-DR'] # Rails, display cop name
-      tsk.fail_on_error = false
+      tsk.fail_on_error = true
     end
 
     desc 'Execute reek'
     Reek::Rake::Task.new do |tsk|
       tsk.source_files = ['app/**/*.rb', 'lib/**/*.rb', 'lib/tasks/*.rake', 'config/**/*.rb']
-      tsk.fail_on_error = false
+      tsk.fail_on_error = true
       # tsk.verbose = true
     end
   end
