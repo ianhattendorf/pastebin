@@ -9,7 +9,11 @@ class PastesController < ApplicationController
   end
 
   def create
-    @paste = Paste.new(paste_params)
+    if user_signed_in?
+      @paste = current_user.pastes.new(paste_params)
+    else
+      @paste = Paste.new(paste_params)
+    end
     if @paste.save
       redirect_to @paste
     else
