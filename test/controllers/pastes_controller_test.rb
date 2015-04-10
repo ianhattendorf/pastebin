@@ -1,6 +1,8 @@
 require 'test_helper'
 
 describe PastesController do
+  include Devise::TestHelpers
+
   before do
     @paste = pastes(:one)
   end

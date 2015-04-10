@@ -8,6 +8,7 @@ AllCops:
     - bin/setup
     - bin/spring
     - db/schema.rb
+    - db/migrate/*
 
 Metrics/LineLength:
   Max: 100
