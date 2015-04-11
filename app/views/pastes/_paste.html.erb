@@ -1,4 +1,5 @@
 <li>
+  <i class="fa <%= paste_visibility_icon(paste) %>"></i>
   <%= link_to paste.title, paste %>
   <small><%= time_ago_in_words(paste.created_at) %> ago</small>
 </li>
