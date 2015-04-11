@@ -31,5 +31,13 @@ describe UsersController do
       refute_match 'fa-unlock-alt', response.body
       refute_match 'fa-lock', response.body
     end
+
+    it 'should only list stats for owners' do
+      get :show, id: archer
+      refute_match(/your stats/i, response.body)
+      sign_in archer
+      get :show, id: archer
+      assert_match(/your stats/i, response.body)
+    end
   end
 end

@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-sm-10">
     <h1>Pastes for <%= @user.email %></h1>
+    <span class="user-details">
+      Total Pastes: <%= @pastes.count %> |
+      Joined: <%= time_ago_in_words(@user.created_at) %> ago
+    </span>
     <div class="panel panel-default">
       <table class="table">
         <thead>
@@ -15,5 +19,14 @@
         </tbody>
       </table>
     </div>
+    <% if user_owner? %>
+    <h2>Your stats</h2>
+    <ul>
+      <li>Total number of pastes: <%= @pastes.count %></li>
+      <li>Number of public pastes: <%= @pastes.where(visibility: 0).count %></li>
+      <li>Number of private pastes: <%= @pastes.where(visibility: 1).count %></li>
+      <li>Number of unlisted pastes: <%= @pastes.where(visibility: 2).count %></li>
+    </ul>
+    <% end %>
   </div>
 </div>

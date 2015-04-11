@@ -22,18 +22,21 @@ describe PastesController do
   it 'should get show' do
     get :show, id: paste
     assert_response :success
+    refute_includes response.body, 'btn-danger'
   end
 
   it 'should get show with owner' do
     sign_in archer
     get :show, id: paste
     assert_response :success
+    assert_includes response.body, 'btn-danger'
   end
 
   it 'should get show with non-owner' do
     sign_in lana
     get :show, id: paste
     assert_response :success
+    refute_includes response.body, 'btn-danger'
   end
 
   it 'should post create' do
