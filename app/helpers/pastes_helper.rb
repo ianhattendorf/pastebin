@@ -1,6 +1,9 @@
 require 'coderay'
+require 'paste_visibility_helper'
 
 module PastesHelper
+  include PasteVisibilityHelper
+
   def syntax_highlight(code, language)
     CodeRay.scan(code, language).div(line_numbers: :inline)
   end
@@ -9,7 +12,7 @@ module PastesHelper
     if @paste.user.nil?
       'anonymous'
     else
-      @paste.user.email
+      link_to @paste.user.email, @paste.user
     end
   end
 
@@ -25,16 +28,5 @@ module PastesHelper
     levels = { 'Public' => :is_public, 'Private' => :is_private, 'Unlisted' => :is_unlisted }
     levels.except!('Private') unless user_signed_in?
     levels
-  end
-
-  def paste_visibility_icon(paste)
-    case paste.visibility
-    when 'is_public'
-      'fa-globe'
-    when 'is_unlisted'
-      'fa-unlock-alt'
-    when 'is_private'
-      'fa-lock'
-    end
   end
 end

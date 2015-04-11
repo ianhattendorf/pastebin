@@ -44,4 +44,8 @@ Rails.application.configure do
   config.generators do |generator|
     generator.test_framework :minitest, spec: true
   end
+
+  timeout_logger = Logger.new(STDOUT)
+  timeout_logger.level = Logger::WARN
+  Rack::Timeout::StageChangeLoggingObserver.logger = timeout_logger
 end

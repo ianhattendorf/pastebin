@@ -13,7 +13,7 @@ describe PastesHelper do
 
     it 'works with a user\'s paste' do
       @paste = archer_paste
-      assert_equal archer.email, posted_by
+      assert posted_by.include?(archer.email)
     end
   end
 

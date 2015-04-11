@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-10">
+    <h1>Pastes for <%= @user.email %></h1>
+    <div class="panel panel-default">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Added</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "paste", collection: @pastes %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
