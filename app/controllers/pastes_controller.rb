@@ -1,4 +1,5 @@
 class PastesController < ApplicationController
+  impressionist actions: [:show, :download, :raw]
   before_action :paste_owner, only: [:edit, :update, :destroy]
   before_action :paste_view, only: [:show, :download, :raw]
 

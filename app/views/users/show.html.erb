@@ -3,6 +3,8 @@
     <h1>Pastes for <%= @user.email %></h1>
     <span class="user-details">
       Total Pastes: <%= @pastes.count %> |
+      Total Views: <%= @user.views %> |
+      Total Paste Views: <%= @total_paste_views %> |
       Joined: <%= time_ago_in_words(@user.created_at) %> ago
     </span>
     <div class="panel panel-default">
@@ -11,6 +13,7 @@
           <tr>
             <th>Title</th>
             <th>Added</th>
+            <th>Views</th>
             <th>Language</th>
           </tr>
         </thead>
@@ -26,6 +29,7 @@
       <li>Number of public pastes: <%= @pastes.where(visibility: 0).count %></li>
       <li>Number of private pastes: <%= @pastes.where(visibility: 1).count %></li>
       <li>Number of unlisted pastes: <%= @pastes.where(visibility: 2).count %></li>
+      <li>Number of total paste views: <%= @total_paste_views %></li>
     </ul>
     <% end %>
   </div>

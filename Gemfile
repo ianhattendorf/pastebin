@@ -19,6 +19,7 @@ gem 'devise', '~> 3.4'
 gem 'font-awesome-rails', '~> 4.3'
 gem 'puma'
 gem 'rack-timeout'
+gem 'impressionist', '~> 1.5'
 
 group :development do
   gem 'byebug'

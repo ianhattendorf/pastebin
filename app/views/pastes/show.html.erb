@@ -5,6 +5,7 @@
     <h1><%= @paste.title %></h1>
     <span class="paste-details">
       Posted on <%= @paste.created_at.to_formatted_s(:long_ordinal) %> by <%= posted_by %> |
+      Views: <%= @paste.views %> |
       Syntax: <%= @paste.language %> |
       Size: <%= number_to_human_size(@paste.content.bytesize) %> |
       <%= link_to 'Download', download_path(@paste) %> |

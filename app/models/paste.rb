@@ -1,6 +1,7 @@
 require 'coderay'
 
 class Paste < ActiveRecord::Base
+  is_impressionable
   enum visibility: [:is_public, :is_private, :is_unlisted]
   belongs_to :user
   validates :content, presence: true
@@ -15,6 +16,10 @@ class Paste < ActiveRecord::Base
 
   def file_extension
     CodeRay.scanner(language.to_sym).file_extension
+  end
+
+  def views
+    impressionist_count(filter: :ip_address)
   end
 
   private
