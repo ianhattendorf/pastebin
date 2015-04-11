@@ -17,12 +17,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'coderay', '~> 1.1.0'
 gem 'devise', '~> 3.4'
 gem 'font-awesome-rails', '~> 4.3'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
+gem 'puma'
+gem 'rack-timeout'
 
 group :development do
   gem 'byebug'
@@ -42,4 +38,8 @@ group :development, :test do
   gem 'reek', require: false
   gem 'rubocop', require: false
   gem 'spring', require: false
+end
+
+group :production do
+  gem 'rails_12factor'
 end
