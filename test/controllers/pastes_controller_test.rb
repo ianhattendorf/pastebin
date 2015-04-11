@@ -12,6 +12,12 @@ describe PastesController do
     assert_response :success
   end
 
+  it 'should get index when signed in' do
+    sign_in archer
+    get :index
+    assert_response :success
+  end
+
   it 'should get show' do
     get :show, id: paste
     assert_response :success

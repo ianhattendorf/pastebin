@@ -3,7 +3,8 @@ class PastesController < ApplicationController
 
   def index
     @paste = Paste.new
-    @pastes = Paste.all
+    @pastes = public_pastes
+    @my_pastes = my_pastes
   end
 
   def show
@@ -19,7 +20,8 @@ class PastesController < ApplicationController
     if @paste.save
       redirect_to @paste
     else
-      @pastes = Paste.all
+      @pastes = public_pastes
+      @my_pastes = my_pastes
       render :index
     end
   end
@@ -60,5 +62,13 @@ class PastesController < ApplicationController
     @paste = Paste.find(params[:id])
     return unless @paste.user.nil? || @paste.user != current_user
     redirect_to root_url, alert: 'You must be the owner of the paste to do that.'
+  end
+
+  def public_pastes
+    Paste.where(visibility: 0).order(created_at: :desc).limit(10)
+  end
+
+  def my_pastes
+    Paste.where(user: current_user).order(created_at: :desc).limit(10) if user_signed_in?
   end
 end

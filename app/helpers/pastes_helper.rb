@@ -22,8 +22,8 @@ module PastesHelper
   end
 
   def valid_visibility_levels
-    visibility_levels = Paste.visibilities.dup
-    visibility_levels.except!(:is_private) unless user_signed_in?
-    visibility_levels
+    levels = { 'Public' => :is_public, 'Private' => :is_private, 'Unlisted' => :is_unlisted }
+    levels.except!('Private') unless user_signed_in?
+    levels
   end
 end

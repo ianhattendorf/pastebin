@@ -19,5 +19,5 @@ namespace :testcode do
 end
 
 task :testcode do
-  %w(rubocop reek).each { |task| Rake::Task["testcode:#{task}"].invoke }
+  %w(rubocop).each { |task| Rake::Task["testcode:#{task}"].invoke }
 end

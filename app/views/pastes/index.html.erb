@@ -4,10 +4,15 @@
     <%= render 'paste_form', object: @paste %>
   </div>
   <div class="pastes col-sm-2">
-    <h2>Pastes</h2>
-
+    <h2>Public Pastes</h2>
     <ul class="pastes-menu">
       <%= render @pastes %>
     </ul>
+    <% if user_signed_in? %>
+      <h2>My Pastes</h2>
+      <ul class="pastes-menu">
+        <%= render @my_pastes %>
+      </ul>
+    <% end %>
   </div>
 </div>
