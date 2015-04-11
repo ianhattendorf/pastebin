@@ -4,4 +4,4 @@
 [![Dependency Status](https://gemnasium.com/ianhattendorf/pastebin.svg)](https://gemnasium.com/ianhattendorf/pastebin)
 [![Test Coverage](https://codeclimate.com/github/ianhattendorf/pastebin/badges/coverage.svg)](https://codeclimate.com/github/ianhattendorf/pastebin)
 
-A simple pastebin app.
+A simple pastebin app. Master is auto-deployed at [https://frozen-anchorage-3152.herokuapp.com/](https://frozen-anchorage-3152.herokuapp.com/)
