@@ -3,6 +3,8 @@ CodeClimate::TestReporter.configure do |config|
   config.logger.level = Logger::WARN
 end
 CodeClimate::TestReporter.start
+require 'simplecov'
+SimpleCov.start
 
 ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)

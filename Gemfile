@@ -35,6 +35,7 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
   gem 'rake', require: false # required for Travis CI
+  gem 'simplecov', '~> 0.9.2', require: false
 end
 
 group :development, :test do

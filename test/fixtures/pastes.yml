@@ -1,7 +1,9 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-<% private = 1 %>
+<% is_public = 0 %>
+<% is_private = 1 %>
+<% is_unlisted = 2 %>
 
 one:
   title: paste1
@@ -25,4 +27,11 @@ four:
   content: content4
   language: text
   user: archer
-  visibility: <%= private %>
+  visibility: <%= is_private %>
+
+five:
+  title: paste5
+  content: content5
+  language: text
+  user: archer
+  visibility: <%= is_unlisted %>
