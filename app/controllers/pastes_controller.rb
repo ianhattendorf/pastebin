@@ -1,5 +1,6 @@
 class PastesController < ApplicationController
   before_action :paste_owner, only: [:edit, :update, :destroy]
+  before_action :paste_view, only: [:show, :download, :raw]
 
   def index
     @paste = Paste.new
@@ -8,7 +9,6 @@ class PastesController < ApplicationController
   end
 
   def show
-    @paste = Paste.find(params[:id])
   end
 
   def create
@@ -43,13 +43,11 @@ class PastesController < ApplicationController
   end
 
   def download
-    paste = Paste.find(params[:id])
-    send_data paste.content, filename: "#{paste.title}.#{paste.file_extension}", type: Mime::TEXT
+    send_data @paste.content, filename: "#{@paste.title}.#{@paste.file_extension}", type: Mime::TEXT
   end
 
   def raw
-    paste = Paste.find(params[:id])
-    render plain: paste.content
+    render plain: @paste.content
   end
 
   private
@@ -62,6 +60,13 @@ class PastesController < ApplicationController
     @paste = Paste.find(params[:id])
     return unless @paste.user.nil? || @paste.user != current_user
     redirect_to root_url, alert: 'You must be the owner of the paste to do that.'
+  end
+
+  def paste_view
+    @paste = Paste.where('"pastes"."visibility" IN (0,2) OR "pastes"."user_id" = ?',
+                         current_user).find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_url # TODO: redirect to 404 page
   end
 
   def public_pastes

@@ -1,6 +1,8 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+<% private = 1 %>
+
 one:
   title: paste1
   content: content1
@@ -14,6 +16,13 @@ two:
   user: lana
 
 three:
-  title: paste2
-  content: content2
+  title: paste3
+  content: content3
   language: text
+
+four:
+  title: paste4
+  content: content4
+  language: text
+  user: archer
+  visibility: <%= private %>

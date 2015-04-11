@@ -6,6 +6,7 @@ describe PastesController do
   let(:archer) { users(:archer) }
   let(:lana) { users(:lana) }
   let(:paste) { pastes(:one) }
+  let(:paste_private_archer) { pastes(:four) }
 
   it 'should get index' do
     get :index
@@ -98,5 +99,20 @@ describe PastesController do
     get :raw, id: paste
     assert_equal paste.content, response.body
     assert_match 'text/plain', response.header['Content-Type']
+  end
+
+  it 'should get raw when authorized' do
+    sign_in archer
+    get :raw, id: paste_private_archer
+    assert_equal paste_private_archer.content, response.body
+    assert_match 'text/plain', response.header['Content-Type']
+  end
+
+  it 'should redirect raw when unauthorized' do
+    get :raw, id: paste_private_archer
+    assert_redirected_to root_url
+    sign_in lana
+    get :raw, id: paste_private_archer
+    assert_redirected_to root_url
   end
 end
